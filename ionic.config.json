@@ -1,0 +1,7 @@
+{
+  "name": "iimap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion_buttons slot="start">
+      <ion-back-button defaultHref="/provinsi/sumatrautara"></ion-back-button>
+    </ion_buttons>
+    <ion-title>video</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item class="card video-shadow">
+      <div class="video-container">
+          <iframe [src]="linkin()" frameborder="0" width="560" height="315"></iframe>
+          <!-- <iframe src="https://www.youtube.com/embed/{{this.short}}" frameborder="0" width="560" height="315"></iframe> -->
+      </div>
+  </ion-item>
+</ion-content>
