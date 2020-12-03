@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion_buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion_buttons>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+        <ion-img [src]="linkfoto" (click)="test()"></ion-img>
+    </ion-item>
+    <ion-item>
+      Nama: {{this.nama}}
+    </ion-item>
+    <ion-item>
+      Email: {{this.email}}
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

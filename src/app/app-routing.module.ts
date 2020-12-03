@@ -19,6 +19,18 @@ const routes: Routes = [
     path: 'provinsi/:provinsi/youtube',
     loadChildren: () => import('./provinsi/video/video.module').then( m => m.VideoPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

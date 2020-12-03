@@ -1,8 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      IIMAP
     </ion-title>
+
+    <ion-buttons slot="primary" *ngIf="flag == 1">
+      <ion-button routerLink="/profile">
+        Profile
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary" *ngIf="flag == 1">
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="primary" *ngIf="flag == 0">
+      <ion-button routerLink="/login">
+        Login
+      </ion-button>
+    </ion-buttons> 
+    
   </ion-toolbar>
 </ion-header>
 
