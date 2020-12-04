@@ -58,7 +58,7 @@ export class ProvinsiPage implements OnInit {
   }
 
   bookmark(book: any, id: any) {
-    console.log(book)
+    // console.log(book)
     if (book == 0) {
       //delete di firebase
       this.provinsiSrv.deleteBookmark(this.key);
