@@ -83,7 +83,7 @@ export class ProvinsiPage implements OnInit {
 
       this.fireAuth.user.subscribe((data => {
         this.userid = data.uid;
-        console.log(this.userid);
+        // console.log(this.userid);
 
         this.provinsiSrv.getAllBookmark().snapshotChanges().pipe(
           map(changes =>
@@ -91,11 +91,11 @@ export class ProvinsiPage implements OnInit {
           )
         ).subscribe(data => {
           data.forEach(element => {
-            console.log("MASUK ELEMENT");
+            // console.log("MASUK ELEMENT");
             // console.log(this.userid);
             if (element['userid'] == this.userid
               && element['provinsiid'] == this.id) {
-              console.log(element);
+              // console.log(element);
               this.booked = 1;
               this.key = element['key'];
             }
@@ -108,7 +108,7 @@ export class ProvinsiPage implements OnInit {
           this.datas = res
         }
       );
-      
+
     });
   }
 

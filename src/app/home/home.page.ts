@@ -30,16 +30,16 @@ export class HomePage implements OnInit {
       )
     ).subscribe(data => {
       this.provinsi = data;
-      console.log(this.provinsi);
+      // console.log(this.provinsi);
     });
 
     this.authSrv.userDetails().subscribe(res => {
       if (res != null) {
         this.userEmail = res.email;
         this.flag = '1';
-        console.log("masuk")
+        // console.log("masuk")
       } else {
-        console.log("belom")
+        // console.log("belom")
         this.flag = '0';
         this.navCtrl.navigateBack('')
       }
@@ -48,7 +48,7 @@ export class HomePage implements OnInit {
   }
 
   logout() {
-    console.log("logout")
+    // console.log("logout")
     this.authSrv.logoutUser()
       .then(res => {
         this.flag = '0';
