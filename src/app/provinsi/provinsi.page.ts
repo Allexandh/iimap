@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Provinsi } from '../provinsi';
 import { ProvinsiService } from '../provinsi.service';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-provinsi',
@@ -19,7 +20,6 @@ export class ProvinsiPage implements OnInit {
   // provinsi: any;
   // key: string;
   datas: any = [];
-
   id: string;
   destinasi: any = [];
   ibukota: any = [];
@@ -31,27 +31,47 @@ export class ProvinsiPage implements OnInit {
   tari: any = [];
   titiktertinggi: any = [];
 
-  ddd: any = [];
+  booked: any = 0;
+  userid: any;
+  key: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private provinsiSrv: ProvinsiService,
     private db: AngularFireDatabase,
     private router: Router,
     private iab: InAppBrowser,
-    private youtube: YoutubeVideoPlayer
+    private youtube: YoutubeVideoPlayer,
+    private fireAuth: AngularFireAuth,
   ) { }
 
-  openWeb(destinasi: string, flag:string){
-    if(flag == '1'){
-    const browser = this.iab.create('https://www.google.com/maps/search/?api=1&query='+destinasi);
-
-    }else{
-    const browser = this.iab.create('http://www.google.com/search?q='+destinasi);
+  openWeb(destinasi: string, flag: string) {
+    if (flag == '1') {
+      const browser = this.iab.create('https://www.google.com/maps/search/?api=1&query=' + destinasi);
+    } else {
+      const browser = this.iab.create('http://www.google.com/search?q=' + destinasi);
     }
   }
 
-  openYoutube(id: string){
-    this.router.navigate(['/provinsi/'+id+'/youtube']);
+  openYoutube(id: string) {
+    this.router.navigate(['/provinsi/' + id + '/youtube']);
+  }
+
+  bookmark(book: any, id: any) {
+    console.log(book)
+    if (book == 0) {
+      //delete di firebase
+      this.provinsiSrv.deleteBookmark(this.key);
+    } else {
+      // simpen data di firebase
+      let dataBook: any = {
+        provinsiid: id,
+        userid: this.userid,
+        flag: "1",
+      }
+      this.provinsiSrv.bookmark(dataBook);
+    }
+    this.booked = book;
   }
 
   ngOnInit() {
@@ -61,40 +81,34 @@ export class ProvinsiPage implements OnInit {
       }
       this.id = paramMap.get('provinsi');
 
-      // this.db.object('/provinsi/'+this.id).valueChanges().subscribe(data => {
-      //   console.log(data);
-      //   this.prov = data;
-      //   // this.destinasi = data.destinasi;
-      //   console.log(this.prov);
-      // });
+      this.fireAuth.user.subscribe((data => {
+        this.userid = data.uid;
+        console.log(this.userid);
+
+        this.provinsiSrv.getAllBookmark().snapshotChanges().pipe(
+          map(changes =>
+            changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+          )
+        ).subscribe(data => {
+          data.forEach(element => {
+            console.log("MASUK ELEMENT");
+            // console.log(this.userid);
+            if (element['userid'] == this.userid
+              && element['provinsiid'] == this.id) {
+              console.log(element);
+              this.booked = 1;
+              this.key = element['key'];
+            }
+          });
+        });
+      }));
 
       this.provinsiSrv.getProvinsi(this.id).then(
         (res) => {
           this.datas = res
-          // const zz = [];
-          // res.destinasi.forEach(element => {
-          //   zz.push(element.split(','))
-          // });
-          // this.destinasi = zz;
-          // this.logo = res.logo;
-          // this.nama = res.nama;
-          // this.lagu = res.lagu.split(',');
-          // this.ibukota = res.ibukota.split(',');
-          // this.makanan = res.makanan.split(',');
-          // this.pakaian = res.pakaian.split(',');
-          // this.tari = res.tari.split(',');
-          // this.titiktertinggi = res.titiktertinggi.split(',');
-
-
-
-          // console.log(this.makanan[0])
-          // console.log(this.datas.makanan[0])
-          // this.datas.makanan = res.makanan.split(',');
-          // console.log
-
         }
       );
-
+      
     });
   }
 

@@ -1,19 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion_buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion_buttons>
     <ion-title>Provinsi {{datas.nama}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
   <ion-list>
     <ion-item>
       <img [src]="datas.logo">
     </ion-item>
     <ion-item>
       Pemerintah Provinsi {{datas.nama}}
+      <ion-icon name="bookmark-outline" *ngIf="booked == 0" (click)="bookmark(1,id)"></ion-icon>
+      <ion-icon name="bookmark" *ngIf="booked == 1" (click)="bookmark(0,id)"></ion-icon>
     </ion-item>
     <ion-item>
       1. Ibu kota Provinsi {{datas.nama}} adalah {{datas.ibukota}}

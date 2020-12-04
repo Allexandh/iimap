@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion_buttons slot="start">
+    <!-- <ion_buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-    </ion_buttons>
+    </ion_buttons> -->
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/bookmark">
+        Bookmark
+      </ion-button>
+    </ion-buttons>
     <ion-title>profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +16,7 @@
 
   <ion-list>
     <ion-item>
-        <ion-img [src]="linkfoto" (click)="test()"></ion-img>
+      <ion-img [src]="linkfoto" (click)="test()"></ion-img>
     </ion-item>
     <ion-item>
       Nama: {{this.nama}}

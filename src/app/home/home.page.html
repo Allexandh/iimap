@@ -4,11 +4,11 @@
       IIMAP
     </ion-title>
 
-    <ion-buttons slot="primary" *ngIf="flag == 1">
+    <!-- <ion-buttons slot="primary" *ngIf="flag == 1">
       <ion-button routerLink="/profile">
         Profile
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
 
     <ion-buttons slot="primary" *ngIf="flag == 1">
       <ion-button (click)="logout()">
@@ -25,7 +25,10 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
 <img src="assets/map.jpg" usemap="#image-map">
 <map name="image-map" >
   <area target="" alt="aceh" title="aceh" href="/provinsi/aceh"

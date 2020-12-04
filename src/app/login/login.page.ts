@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = '';
-        this.navCtrl.navigateForward('/home');
+        this.navCtrl.navigateForward('/');
         // this.successMessage = "Your account has been created. Please Log In."
       }, err => {
         // console.log(err);

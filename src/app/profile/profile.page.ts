@@ -37,7 +37,6 @@ export class ProfilePage implements OnInit {
           this.linkfoto = res.linkfoto;
         }
       );
-      // this.data = this.authSrv.getData(this.userid);
     }));
     // this.authSrv.getData().then(
     //   (res) => {

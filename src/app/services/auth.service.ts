@@ -21,6 +21,8 @@ export class AuthService {
     
   }
 
+
+
   createUser(user: User): any {
     return this.db.object('/users/' + user.uid).set({
       email: user.email,
