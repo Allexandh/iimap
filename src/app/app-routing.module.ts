@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'bookmark',
     loadChildren: () => import('./bookmark/bookmark.module').then( m => m.BookmarkPageModule)
   },
+  {
+    path: 'provinsi/:provinsi/:tempat',
+    loadChildren: () => import('./provinsi/maps/maps.module').then( m => m.MapsPageModule)
+  },
   // {
   //   path: 'profile',
   //   loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)

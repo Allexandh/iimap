@@ -1,12 +1,13 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { map } from 'rxjs/operators';
 import { Provinsi } from '../provinsi';
 import { ProvinsiService } from '../provinsi.service';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-provinsi',
@@ -43,6 +44,7 @@ export class ProvinsiPage implements OnInit {
     private iab: InAppBrowser,
     private youtube: YoutubeVideoPlayer,
     private fireAuth: AngularFireAuth,
+    
   ) { }
 
   openWeb(destinasi: string, flag: string) {
@@ -51,6 +53,16 @@ export class ProvinsiPage implements OnInit {
     } else {
       const browser = this.iab.create('http://www.google.com/search?q=' + destinasi);
     }
+  }
+
+  openMaps(tempat: string, kordinat: object, id: string){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        kordinat: kordinat,
+        tempat: tempat
+      }
+    };
+    this.router.navigate(['/provinsi/'+ id +'/'+tempat], navigationExtras);
   }
 
   openYoutube(id: string) {
@@ -106,7 +118,12 @@ export class ProvinsiPage implements OnInit {
       this.provinsiSrv.getProvinsi(this.id).then(
         (res) => {
           this.datas = res
+          // console.log(this.datas.kordinat.Lat[this.datas.destinasi[0]]);
+          console.log(this.datas);
+          console.log(this.datas.kordinat.Lat[this.datas.destinasi[0]]);
+          // console.log(this.datas.destinasi);
         }
+       
       );
 
     });

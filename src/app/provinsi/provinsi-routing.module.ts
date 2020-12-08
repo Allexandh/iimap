@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'video',
     loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
+  },  {
+    path: 'maps',
+    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
   }
+
 ];
 
 @NgModule({
