@@ -1,6 +1,7 @@
 export class Provinsi {
     key: string;
     destinasi: string[];
+    kordinat: object;
     ibukota: string;
     lagu: string;
     linklagu: string;
@@ -13,6 +14,7 @@ export class Provinsi {
     constructor(
         key: string,
         destinasi: string[],
+        kordinat: object,
         ibukota: string,
         lagu: string,
         linklagu: string,
