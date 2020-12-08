@@ -41,7 +41,6 @@ export class ProvinsiService {
       const dd: Provinsi = {
         "key": key,
         "destinasi": snapshot.val().destinasi,
-        "kordinat": snapshot.val().kordinat,
         "ibukota": snapshot.val().ibukota,
         "lagu": snapshot.val().lagu,
         "linklagu": snapshot.val().linklagu,
