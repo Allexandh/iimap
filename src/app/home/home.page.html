@@ -106,11 +106,20 @@
 </ion-card> -->
 
 <ion-card>
-  <form class="form">
+  <form #f="ngForm" (ngSubmit)="submitPost(f)">
+    <!-- <ion-item>
+      <ion-label position="floating">Uid</ion-label>
+      <ion-input type="text" ngModel name="uid"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">key</ion-label>
+      <ion-input type="text" ngModel name="key"></ion-input>
+    </ion-item> -->
     <ion-item>
       <ion-label position="floating">Buat postingan</ion-label>
-      <ion-input type="text" formControlName="posting"></ion-input>
+      <ion-input type="text" ngModel name="comment"></ion-input>
     </ion-item>
+    <ion-button type="submit" color="primary" expand="block">POST</ion-button>
   </form>
 </ion-card>
 </ion-content>
