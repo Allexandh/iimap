@@ -10,14 +10,14 @@
       </ion-button>
     </ion-buttons> -->
 
-    <ion-buttons slot="primary" *ngIf="flag == 1">
-      <ion-button (click)="logout()">
+    <ion-buttons slot="primary" *ngIf="flag == 1" >
+      <ion-button color="twitter" shape="round" (click)="logout()">
         Logout
       </ion-button>
     </ion-buttons>
     
-    <ion-buttons slot="primary" *ngIf="flag == 0">
-      <ion-button routerLink="/login">
+    <ion-buttons slot="primary" *ngIf="flag == 0" >
+      <ion-button color="twitter" shape="round" routerLink="/login">
         Login
       </ion-button>
     </ion-buttons> 
@@ -28,45 +28,55 @@
 
 
 <ion-content>
-
-<img src="assets/map.jpg" usemap="#image-map">
-<map name="image-map" >
-  <area target="" alt="aceh" title="aceh" href="/provinsi/aceh"
-    coords="6,77,17,97,28,104,33,113,41,116,59,136,68,148,60,112,72,101,64,88,57,80,34,81,22,73,13,71" shape="poly">
-  <area target="" alt="sumatra utara" title="sumatra utara" href="/provinsi/sumatrautara"
-    coords="71,103,107,127,113,138,115,157,111,175,90,184,78,153,68,147,63,114" shape="poly">
-  <area target="" alt="riau" title="riau" href="/provinsi/riau"
-    coords="117,141,128,143,145,149,158,159,176,171,191,191,182,209,162,215,143,212,129,201,121,184,112,177"
-    shape="poly">
-  <area target="" alt="sumatra barat" title="sumatrabarat" href=""
-    coords="95,188,108,177,127,201,145,216,137,241,116,266,78,224" shape="poly">
-  <area target="" alt="jambi" title="jambi" href=""
-    coords="147,214,163,220,180,212,201,215,202,230,178,240,155,253,138,242" shape="poly">
-  <area target="" alt="bengkulu" title="bengkulu" href=""
-    coords="132,247,141,245,154,256,173,271,173,287,188,294,174,295" shape="poly">
-  <area target="" alt="sumatra selatan" title="sumatraselatan" href=""
-    coords="207,229,224,246,236,260,235,282,223,273,199,292,193,295,176,285,175,267,155,254" shape="poly">
-  <area target="" alt="kepulauan riau" title="kepulauanriau" href="" coords="208,205,219,196,212,168,203,170,201,201"
-    shape="poly">
-  <area target="" alt="lampung" title="lampung" href="" coords="188,298,222,276,239,289,234,318,209,320" shape="poly">
-  <area target="" alt="bangka belitung" title="bangkabelitung" href=""
-    coords="221,234,239,224,283,252,287,263,250,260" shape="poly">
-  <area target="" alt="" title="" href="" coords="" shape="0">
-  <area target="" alt="banten" title="banten" href="" coords="221,341,238,319,252,323,245,344" shape="poly">
-  <area target="" alt="jakarta" title="jakarta" href="" coords="250,331,257,331,259,323,253,321" shape="poly">
-  <area target="" alt="jawa barat" title="jawa barat" href=""
-    coords="245,344,249,354,271,357,277,361,297,359,298,342,287,327,269,323,261,325,259,332,250,334" shape="poly">
-  <area target="" alt="yogyakarta" title="yogyakarta" href=""
-    coords="298,340,332,342,339,329,345,329,358,338,356,351,345,370,340,357,328,355,323,362,298,360" shape="poly">
-  <area target="" alt="jawa timur" title="jawa timur" href=""
-    coords="361,340,387,341,415,341,420,363,421,383,385,376,349,371" shape="poly">
-  <area target="" alt="" title="" href="" coords="" shape="0">
-  <area target="" alt="bali" title="bali" href="" coords="423,369,438,367,448,374,436,388,423,376" shape="poly">
-  <area target="" alt="ntb" title="ntb" href="" coords="459,369,498,367,525,382,473,390,458,387,451,382" shape="poly">
-  <area target="" alt="ntt" title="ntt" href=""
-    coords="535,376,551,373,581,376,602,370,649,370,653,400,600,432,540,415,516,399" shape="poly">
-  <area target="" alt="" title="" href="" coords="" shape="0">
-  <area target="" alt="" title="" href="" coords="992,248,994,388,923,374,856,281,858,252,869,207,885,206"
-    shape="poly">
-</map>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Peta Budaya Indonesia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Berikut merupakan peta Indonesia, silahkan di klik untuk mengetahui lebih lanjut</ion-card-content>
+    <img src="assets/map.jpg" usemap="#image-map">
+    <map name="image-map" >
+      <area target="" alt="aceh" title="aceh" href="/provinsi/aceh"
+        coords="6,77,17,97,28,104,33,113,41,116,59,136,68,148,60,112,72,101,64,88,57,80,34,81,22,73,13,71" shape="poly">
+      <area target="" alt="sumatra utara" title="sumatra utara" href="/provinsi/sumatrautara"
+        coords="71,103,107,127,113,138,115,157,111,175,90,184,78,153,68,147,63,114" shape="poly">
+      <area target="" alt="riau" title="riau" href="/provinsi/riau"
+        coords="117,141,128,143,145,149,158,159,176,171,191,191,182,209,162,215,143,212,129,201,121,184,112,177"
+        shape="poly">
+      <area target="" alt="sumatra barat" title="sumatrabarat" href=""
+        coords="95,188,108,177,127,201,145,216,137,241,116,266,78,224" shape="poly">
+      <area target="" alt="jambi" title="jambi" href=""
+        coords="147,214,163,220,180,212,201,215,202,230,178,240,155,253,138,242" shape="poly">
+      <area target="" alt="bengkulu" title="bengkulu" href=""
+        coords="132,247,141,245,154,256,173,271,173,287,188,294,174,295" shape="poly">
+      <area target="" alt="sumatra selatan" title="sumatraselatan" href=""
+        coords="207,229,224,246,236,260,235,282,223,273,199,292,193,295,176,285,175,267,155,254" shape="poly">
+      <area target="" alt="kepulauan riau" title="kepulauanriau" href="" coords="208,205,219,196,212,168,203,170,201,201"
+        shape="poly">
+      <area target="" alt="lampung" title="lampung" href="" coords="188,298,222,276,239,289,234,318,209,320" shape="poly">
+      <area target="" alt="bangka belitung" title="bangkabelitung" href=""
+        coords="221,234,239,224,283,252,287,263,250,260" shape="poly">
+      <area target="" alt="" title="" href="" coords="" shape="0">
+      <area target="" alt="banten" title="banten" href="" coords="221,341,238,319,252,323,245,344" shape="poly">
+      <area target="" alt="jakarta" title="jakarta" href="" coords="250,331,257,331,259,323,253,321" shape="poly">
+      <area target="" alt="jawa barat" title="jawa barat" href=""
+        coords="245,344,249,354,271,357,277,361,297,359,298,342,287,327,269,323,261,325,259,332,250,334" shape="poly">
+      <area target="" alt="yogyakarta" title="yogyakarta" href=""
+        coords="298,340,332,342,339,329,345,329,358,338,356,351,345,370,340,357,328,355,323,362,298,360" shape="poly">
+      <area target="" alt="jawa timur" title="jawa timur" href=""
+        coords="361,340,387,341,415,341,420,363,421,383,385,376,349,371" shape="poly">
+      <area target="" alt="" title="" href="" coords="" shape="0">
+      <area target="" alt="bali" title="bali" href="" coords="423,369,438,367,448,374,436,388,423,376" shape="poly">
+      <area target="" alt="ntb" title="ntb" href="" coords="459,369,498,367,525,382,473,390,458,387,451,382" shape="poly">
+      <area target="" alt="ntt" title="ntt" href=""
+        coords="535,376,551,373,581,376,602,370,649,370,653,400,600,432,540,415,516,399" shape="poly">
+      <area target="" alt="" title="" href="" coords="" shape="0">
+      <area target="" alt="" title="" href="" coords="992,248,994,388,923,374,856,281,858,252,869,207,885,206"
+        shape="poly">
+    </map>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      There goes timeline
+    </ion-card-header>
+  </ion-card>
 </ion-content>

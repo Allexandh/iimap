@@ -8,45 +8,50 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-list>
-    <ion-item>
-      <img [src]="datas.logo">
-    </ion-item>
-    <ion-item>
-      Pemerintah Provinsi {{datas.nama}}
-      <ion-icon name="bookmark-outline" *ngIf="booked == 0" (click)="bookmark(1,id)"></ion-icon>
-      <ion-icon name="bookmark" *ngIf="booked == 1" (click)="bookmark(0,id)"></ion-icon>
-    </ion-item>
-    <ion-item>
-      1. Ibu kota Provinsi {{datas.nama}} adalah {{datas.ibukota}}
-    </ion-item>
-    <ion-item>
-      2. Titik tertinggi di Provinsi {{datas.nama}} adalah&nbsp;
-      <a (click)="openWeb(datas.titiktertinggi,1)"> {{datas.titiktertinggi}}</a>
-    </ion-item>
-    <ion-item>
-      3. Salah satu pakaian adat {{datas.nama}} adalah&nbsp;
-      <a (click)="openWeb(datas.pakaian,2)"> {{datas.pakaian}}</a>
-    </ion-item>
-    <ion-item>
-      4. Salah satu lagu adat {{datas.nama}} adalah&nbsp;
-      <a (click)="openYoutube(this.id)"> {{datas.lagu}}</a>
-    </ion-item>
-    <ion-item>
-      5. Salah satu tarian adat {{datas.nama}} adalah&nbsp;
-      <a (click)="openWeb(datas.tari,2)"> {{datas.tari}}</a>
-    </ion-item>
-    <ion-item>
-      6. Salah satu makanan khas {{datas.nama}} adalah&nbsp;
-      <a (click)="openWeb(datas.makanan,2)"> {{datas.makanan}}</a>
-    </ion-item>
-    
-    <ion-item>
-      7. Destinasi utama di {{datas.nama}} adalah&nbsp;
-      <div *ngFor="let item of datas.destinasi">
-        <a (click)="openWeb(item,1)"> {{item}}</a>,
+  <div class="center" text-wrap>
+    <ion-list>
+      <ion-item>
+        <img [src]="datas.logo" class="center2">
+      </ion-item>
+      <ion-item>
+        <div class ="namaProvinsi">
+        Pemerintah Provinsi {{datas.nama}}
+        <ion-icon name="bookmark-outline" *ngIf="booked == 0" (click)="bookmark(1,id)"></ion-icon>
+        <ion-icon name="bookmark" *ngIf="booked == 1" (click)="bookmark(0,id)"></ion-icon>
       </div>
-    </ion-item>
-  </ion-list>
+      </ion-item>
+      <ion-item>
+        <div class ="textAdjustment">
+          1. Ibu kota Provinsi {{datas.nama}} adalah {{datas.ibukota}}
+        </div>
+      </ion-item>
+      <ion-item>
+        2. Titik tertinggi di Provinsi {{datas.nama}} adalah&nbsp;
+        <a (click)="openWeb(datas.titiktertinggi,1)"> {{datas.titiktertinggi}}</a>
+      </ion-item>
+      <ion-item>
+        3. Salah satu pakaian adat {{datas.nama}} adalah&nbsp;
+        <a (click)="openWeb(datas.pakaian,2)"> {{datas.pakaian}}</a>
+      </ion-item>
+      <ion-item>
+        4. Salah satu lagu adat {{datas.nama}} adalah&nbsp;
+        <a (click)="openYoutube(this.id)"> {{datas.lagu}}</a>
+      </ion-item>
+      <ion-item>
+        5. Salah satu tarian adat {{datas.nama}} adalah&nbsp;
+        <a (click)="openWeb(datas.tari,2)"> {{datas.tari}}</a>
+      </ion-item>
+      <ion-item>
+        6. Salah satu makanan khas {{datas.nama}} adalah&nbsp;
+        <a (click)="openWeb(datas.makanan,2)"> {{datas.makanan}}</a>
+      </ion-item>
+      
+      <ion-item>
+        7. Destinasi utama di {{datas.nama}} adalah&nbsp;
+        <div *ngFor="let item of datas.destinasi">
+          <a (click)="openWeb(item, 1)"> {{item}}</a>,
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
