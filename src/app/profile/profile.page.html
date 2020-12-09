@@ -4,6 +4,11 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion_buttons> -->
     <ion-buttons slot="primary">
+      <ion-button routerLink="edit">
+        Edit
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
       <ion-button routerLink="/bookmark">
         Bookmark
       </ion-button>
@@ -16,7 +21,7 @@
 
   <ion-list>
     <ion-item>
-      <ion-img [src]="linkfoto" class="center" (click)="test()"></ion-img>
+      <ion-img [src]="linkfoto" class="center"></ion-img>
     </ion-item>
     <ion-item>
       Nama: {{this.nama}}

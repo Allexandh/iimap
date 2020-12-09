@@ -14,17 +14,12 @@ export class ProfilePage implements OnInit {
   linkfoto: any;
 
   data: any;
-  // userRef: AngularFireList<User> = null;
-  //asd
+  
   constructor(
     private authSrv: AuthService,
     private fireAuth: AngularFireAuth,
 
   ) { }
-
-  test(){
-    console.log("ubahh")
-  }
 
   ngOnInit() {
     this.fireAuth.user.subscribe((data => {

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion_buttons slot="start">
+      <ion-back-button defaultHref="tabs/profile"></ion-back-button>
+    </ion_buttons>
+    <ion-title>edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-img [src]="linkfoto" class="center"></ion-img>
+    </ion-item>
+    <ion-button (click)="ubahfoto()">Ubah Gambar</ion-button>
+  </ion-list>
+
+  <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+
+  <!-- <ion-list>
+    <ion-item>
+      Nama: {{this.nama}}
+    </ion-item>
+    <ion-item>
+      Email: {{this.email}}
+    </ion-item>
+  </ion-list> -->
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input type="text" [(ngModel)]="this.nama" name="nama"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" color="primary" expand="block">Simpan</ion-button>
+  </form>
+</ion-content>

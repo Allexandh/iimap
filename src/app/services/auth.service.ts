@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { User } from '../model/user';
 
 @Injectable({
@@ -16,9 +17,64 @@ export class AuthService {
     private fireAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
+    private storage: AngularFireStorage,
+
   ) {
-    // this.userRef = db.list(this.dbPath);
-    
+    this.userRef = db.list(this.dbPath);
+
+  }
+
+  updateUser(key:string, value:any): Promise<void>{
+    return this.userRef.update(key, value);
+  }
+
+
+  ups(uid: any, file: any) {
+    const randomId = Math.random()
+      .toString(36)
+      .substring(2, 8);
+    // console.log("UPS");
+    return this.storage.ref('images/').child(randomId + ".jpg").putString(file, 'data_url').then(snapshot => {
+      return this.storage.ref('images/' + randomId + ".jpg").getDownloadURL().toPromise().then(res => {
+        const data: any = {
+          linkfoto: res,
+        }
+        this.uploadLinkFoto(uid, data);
+        return res;
+      });
+    });
+
+
+  }
+
+  async upload(uid: any, file: any): Promise<any> {
+    const randomId = Math.random()
+      .toString(36)
+      .substring(2, 8);
+
+    if (file) {
+      try {
+        const task = await this.storage.ref('images').child(randomId + ".jpg").put(file).then(snapshot => {
+        });
+
+        return this.storage.ref('images/' + randomId + ".jpg").getDownloadURL().toPromise().then(res => {
+          const data: any = {
+            linkfoto: res,
+          }
+          this.uploadLinkFoto(uid, data);
+          return res;
+        });
+        // return;
+      } catch (error) {
+        // console.log(error)
+      }
+    }
+  }
+
+  uploadLinkFoto(key: string, value: any): Promise<void> {
+    // console.log(key);
+    // console.log(value);
+    return this.userRef.update(key, value);
   }
 
 
@@ -76,8 +132,8 @@ export class AuthService {
       }
     });
   }
-  
-  getData(uid:any){
+
+  getData(uid: any) {
     // console.log(uid);
     return this.db.database.ref('/users/' + uid).once('value').then(function (snapshot) {
       // console.log(snapshot.val());

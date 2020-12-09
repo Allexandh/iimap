@@ -9,22 +9,24 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AngularFireAuthModule} from '@angular/fire/auth'; 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 // import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  AngularFireModule.initializeApp(environment.firebaseConfig),
-  AngularFireDatabaseModule,
-  AngularFireAuthModule,
-  // InAppBrowser
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    // InAppBrowser
   ],
   providers: [
     StatusBar,
@@ -35,4 +37,4 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
