@@ -31,6 +31,8 @@
     "cordova-plugin-inappbrowser": "^4.0.0",
     "cordova-plugin-youtube-video-player": "^2.4.0",
     "firebase": "^8.1.1",
+    "image-map": "^2.0.1",
+    "image-map-resizer": "^1.0.10",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
