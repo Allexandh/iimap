@@ -15,7 +15,7 @@ export class ProfilePage implements OnInit {
 
   data: any;
   // userRef: AngularFireList<User> = null;
-
+  //asd
   constructor(
     private authSrv: AuthService,
     private fireAuth: AngularFireAuth,
