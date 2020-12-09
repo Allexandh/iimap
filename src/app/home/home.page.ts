@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   userEmail: string;
   flag: string = '0';
   userid: any;
+  posting: any;
 
   constructor(
     private provinsiSrv: ProvinsiService,
@@ -45,6 +46,17 @@ export class HomePage implements OnInit {
       )
     ).subscribe(data => {
       this.provinsi = data;
+      // console.log(this.provinsi);
+    });
+
+    this.postingSrv.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    ).subscribe(data => {
+      this.posting = data;
+      console.log(data);
+      console.log(data.length);
       // console.log(this.provinsi);
     });
 
