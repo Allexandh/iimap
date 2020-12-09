@@ -3,12 +3,21 @@
     <ion-title>search</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar (ionInput)="filterList($event)" ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    
+    <ion-item *ngFor="let data of datas" [routerLink]="['/provinsi/', data.key]">
+      <ion-label>{{data.nama}}</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let data of datas" [routerLink]="['/provinsi/', data.key]">
+      <ion-label>{{data.makanan}}</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let data of datas" [routerLink]="['/provinsi/', data.key]">
+      <ion-label>{{data.lagu}}</ion-label>
+    </ion-item>
+
   </ion-list>
 </ion-content>
