@@ -14,6 +14,10 @@ const routes: Routes = [
   },  {
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
+  },
+  {
+    path: 'googlesite',
+    loadChildren: () => import('./googlesite/googlesite.module').then( m => m.GooglesitePageModule)
   }
 
 ];
