@@ -39,6 +39,11 @@ const routes: Routes = [
     path: 'provinsi/:provinsi/:tempat',
     loadChildren: () => import('./provinsi/maps/maps.module').then( m => m.MapsPageModule)
   },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+
   // {
   //   path: 'profile',
   //   loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
