@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProvinsiService } from '../provinsi.service';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { PostingService } from '../posting.service';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import imageMapResize from 'image-map-resizer';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild('image-map', {read: ElementRef, static:false}) mapRef: ElementRef;
   provinsi: any;
   
   contacts: any;
@@ -30,8 +32,13 @@ export class HomePage implements OnInit {
     private fireAuth: AngularFireAuth,
 
     ) { }
-
+  ionViewDidEnter() {
+    imageMapResize();
+  }
   ngOnInit() {
+    console.log(Map);
+    
+    // imageMapResize();
     this.provinsiSrv.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -77,6 +84,8 @@ export class HomePage implements OnInit {
     // console.log("asd");
   }
 
+
+  
   submitPost(form: any) {
     console.log(form);
     let dataPost: any = {
