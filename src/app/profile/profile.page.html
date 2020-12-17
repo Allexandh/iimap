@@ -3,12 +3,12 @@
     <!-- <ion_buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion_buttons> -->
-    <ion-buttons slot="primary">
+    <ion-buttons slot="primary" *ngIf="isLogin == 1">
       <ion-button routerLink="edit">
         Edit
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="primary" *ngIf="isLogin == 1">
       <ion-button routerLink="/bookmark">
         Bookmark
       </ion-button>

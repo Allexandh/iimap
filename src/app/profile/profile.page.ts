@@ -14,7 +14,7 @@ export class ProfilePage implements OnInit {
   linkfoto: any = 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png';
 
   data: any;
-  
+  isLogin:any = 0;
   constructor(
     private authSrv: AuthService,
     private fireAuth: AngularFireAuth,
@@ -23,6 +23,12 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.fireAuth.user.subscribe((data => {
+      console.log(data)
+      if(data == null){
+        this.isLogin = 0;
+      }else{
+        this.isLogin = 1;
+      }
       this.userid = data.uid;
       this.authSrv.getData(this.userid).then(
         (res) => {
