@@ -15,17 +15,17 @@ export class RegisterPage implements OnInit {
   successMessage: string = '';
   newuser: any;
 
-  validation_messages ={
-    'email' :[
-      {type: 'required', message: 'Email is required'},
-      {type: 'pattern', message: 'Enter a valid email'}
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Email is required' },
+      { type: 'pattern', message: 'Enter a valid email' }
     ],
-    'password' :[
-      {type: 'required', message: 'Password is required'},
-      {type: 'minlength', message: 'Password must be at least 5 characters long'}
+    'password': [
+      { type: 'required', message: 'Password is required' },
+      { type: 'minlength', message: 'Password must be at least 5 characters long' }
     ],
-    'nama' :[
-      {type: 'required', message: 'Nama is required'},
+    'nama': [
+      { type: 'required', message: 'Nama is required' },
       // {type: 'pattern', message: 'Enter a valid email'}
     ],
   }
@@ -53,21 +53,23 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  tryRegister(value){
+  tryRegister(value) {
     this.newuser = this.authSrv.registerUser(value)
-    .then(res => {
-      // console.log(res);
-      this.errorMessage = '';
-      this.successMessage = "Your account has been created. Please Log In."
-    }, err=> {
-      // console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = '';
-    })
+      .then(res => {
+        // console.log(res);
+        this.errorMessage = '';
+        this.validation_form.reset();
+        // this.goLoginPage();
+        this.successMessage = "Your account has been created. Please Log In."
+      }, err => {
+        // console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = '';
+      })
     // console.log(this.newuser)
   }
 
-  goLoginPage(){
+  goLoginPage() {
     this.navCtrl.navigateBack('/login');
   }
 

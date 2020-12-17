@@ -97,19 +97,19 @@
 <ion-card>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        <img [src]="linkfoto">
       </ion-avatar>
       <ion-label>
         <!-- <h3>Name</h3> -->
-        <h3> {{posting[posting.length-1].userid}} </h3>
+        <h3> {{nama}} </h3>
         <!-- <p>Time</p> -->
       </ion-label>
       
     </ion-item>
   <ion-card-content>
     <!-- Bali is good. -->
-    {{posting[posting.length-1].comment}}
-    <br><br>
+    {{comment}}
+    <!-- <br><br> -->
     <!-- <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"> -->
   </ion-card-content>
 </ion-card>

@@ -9,9 +9,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfilePage implements OnInit {
   userid: any;
-  nama: any;
-  email: any;
-  linkfoto: any;
+  nama: any = "Guest";
+  email: any = "Guest@guest.com";
+  linkfoto: any = 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png';
 
   data: any;
   

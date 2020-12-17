@@ -15,30 +15,34 @@ import imageMapResize from 'image-map-resizer';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('image-map', {read: ElementRef, static:false}) mapRef: ElementRef;
+  @ViewChild('image-map', { read: ElementRef, static: false }) mapRef: ElementRef;
   provinsi: any;
-  
+
   contacts: any;
   userEmail: string;
   flag: string = '0';
   userid: any;
   posting: any;
 
+  nama: any;
+  comment: any;
+  linkfoto: any;
+
   constructor(
     private provinsiSrv: ProvinsiService,
     private authSrv: AuthService,
     private navCtrl: NavController,
     private router: Router,
-    private postingSrv: PostingService, 
+    private postingSrv: PostingService,
     private fireAuth: AngularFireAuth,
 
-    ) { }
+  ) { }
   ionViewDidEnter() {
     imageMapResize();
   }
   ngOnInit() {
-    console.log(Map);
-    
+    // console.log(Map);
+
     // imageMapResize();
     this.provinsiSrv.getAll().snapshotChanges().pipe(
       map(changes =>
@@ -54,32 +58,28 @@ export class HomePage implements OnInit {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     ).subscribe(data => {
-      this.posting = data;
-      console.log(data);
-      console.log(data.length);
-      // console.log(this.provinsi);
+      this.posting = data[data.length - 1];
+      this.comment = this.posting.comment;
+      let userIdC = this.posting.userid;
+
+      this.authSrv.getUser(userIdC).then(
+        (res) => {
+          this.nama = res.nama;
+          this.linkfoto = res.linkfoto;
+
+
+        }
+      );
+
+
+      console.log(userIdC)
+
+
     });
 
     this.fireAuth.user.subscribe((data => {
       this.userid = data.uid;
-      console.log(this.userid);
 
-      // this.provinsiSrv.getAllBookmark().snapshotChanges().pipe(
-      //   map(changes =>
-      //     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      //   )
-      // ).subscribe(data => {
-      //   data.forEach(element => {
-      //     // console.log("MASUK ELEMENT");
-      //     // console.log(this.userid);
-      //     if (element['userid'] == this.userid
-      //       && element['provinsiid'] == this.id) {
-      //       // console.log(element);
-      //       this.booked = 1;
-      //       this.key = element['key'];
-      //     }
-      //   });
-      // });
     }));
 
     this.authSrv.userDetails().subscribe(res => {
@@ -97,20 +97,26 @@ export class HomePage implements OnInit {
   }
 
 
-  
-  submitPost(form: any) {
-    console.log(form);
-    let dataPost: any = {
-      comment: form.value.comment,
-      userid: this.userid,
-    }
-    this.postingSrv.create(dataPost);
-    // this.postingSrv.create(dataBook).then(res => {
-    //   this.router.navigateByUrl('/tabs/home');
-    // }).catch(error => console.log(error));
 
-    // dataBook.reset();
-    // this.router.navigateByUrl('/tabs/home');
+  submitPost(form: any) {
+    // console.log(form);
+    this.fireAuth.user.subscribe((data => {
+      // this.userid = data.uid;
+      console.log(data)
+      if (data == null) {
+
+      } else {
+        let dataPost: any = {
+          comment: form.value.comment,
+          userid: this.userid,
+        }
+        this.postingSrv.create(dataPost);
+      }
+
+    }));
+
+
+
   }
 
   logout() {
@@ -118,7 +124,7 @@ export class HomePage implements OnInit {
     this.authSrv.logoutUser()
       .then(res => {
         this.flag = '0';
-        this.navCtrl.navigateBack('');
+        // this.navCtrl.navigateForward('login');
       })
       .catch(error => {
         console.log(error)

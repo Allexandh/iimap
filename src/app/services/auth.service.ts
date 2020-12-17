@@ -28,6 +28,20 @@ export class AuthService {
     return this.userRef.update(key, value);
   }
 
+  getUser(uid:any){
+    return this.db.database.ref('/users/' + uid).once('value').then(function (snapshot) {
+      // console.log(snapshot.val().makanan.split(','))
+      // console.log(snapshot.val())
+      const returnData: User = {
+        "uid": uid,
+        "email": snapshot.val().email,
+        "nama": snapshot.val().nama,
+        "linkfoto": snapshot.val().linkfoto,
+      }
+      return returnData;
+    })
+  }
+
 
   ups(uid: any, file: any) {
     const randomId = Math.random()
